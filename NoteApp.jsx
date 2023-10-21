@@ -13,7 +13,6 @@ class NoteApp extends React.Component {
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
   }
   onAddNoteHandler({ title, body }) {
-    console.log("mantap bor kena");
     this.setState((prevState) => {
       return {
         datas: [
@@ -30,11 +29,24 @@ class NoteApp extends React.Component {
     });
   }
 
+  onDeleteHandler() {
+    console.log("mantap bor kena");
+  }
+
+  onArchiveHandler() {
+    console.log("mantap bor archive");
+  }
+
   render() {
     return (
       <>
         <NoteAppHeader />
-        <NoteAppBody datas={this.state.datas} addNote={this.onAddNoteHandler} />
+        <NoteAppBody
+          datas={this.state.datas}
+          addNote={this.onAddNoteHandler}
+          onArchiveHandler={this.onArchiveHandler}
+          onDeleteHandler={this.onDeleteHandler}
+        />
       </>
     );
   }
