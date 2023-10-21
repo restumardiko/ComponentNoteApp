@@ -1,10 +1,65 @@
-import Form from "./form";
+import React from "react";
 
-export default function NoteInput() {
-  return (
-    <div className="note-input">
-      <h2>Buat catatan</h2>
-      <Form />
-    </div>
-  );
+class NoteInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      body: "",
+    };
+
+    this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
+    this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
+    this.onClickEventHandler = this.onClickEventHandler.bind(this);
+  }
+
+  onTitleChangeEventHandler(event) {
+    this.setState(() => {
+      return {
+        title: event.target.value,
+      };
+    });
+  }
+
+  onBodyChangeEventHandler(event) {
+    this.setState(() => {
+      return {
+        body: event.target.value,
+      };
+    });
+  }
+
+  onClickEventHandler() {
+    //event.preventDefault();
+    this.props.addNote(this.state);
+    console.log(this.state);
+    console.log(this.props);
+  }
+
+  render() {
+    return (
+      <div className="note-input">
+        <h2>Buat catatan</h2>
+        <p className="note-input__title__char-limit">sisa karakter:{}</p>
+        <input
+          onChange={this.onTitleChangeEventHandler}
+          type="text"
+          placeholder="Ini adalah judul ..."
+        />
+        <textarea
+          onChange={this.onBodyChangeEventHandler}
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Tuliskan catatanmu disini ..."
+        ></textarea>
+        <button onClick={this.onClickEventHandler} type="submit">
+          + Buat
+        </button>
+      </div>
+    );
+  }
 }
+
+export default NoteInput;
