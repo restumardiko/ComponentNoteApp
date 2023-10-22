@@ -40,7 +40,13 @@ class NoteApp extends React.Component {
 
   onArchiveHandler(id) {
     console.log("mantap bor archive");
-    console.log(id);
+
+    const datas = this.state.datas.filter((data) => data.id !== id);
+    const data = this.state.datas.filter((data) => data.id === id);
+    data[0].archived = true;
+    const lastDatas = datas.push(data[0]);
+    console.log(datas);
+    this.setState({ datas });
   }
 
   render() {
