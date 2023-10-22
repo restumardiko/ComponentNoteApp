@@ -1,7 +1,7 @@
-export default function ArchiveButton(props) {
+export default function ArchiveButton({ id, onArchiveHandler }) {
   return (
     <button
-      onClick={() => onArchiveHandler()}
+      onClick={() => onArchiveHandler(id)}
       className="note-item__archive-button"
     >
       Arsipkan

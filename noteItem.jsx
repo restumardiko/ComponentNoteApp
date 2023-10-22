@@ -12,7 +12,10 @@ export default function NoteItem(props) {
       </div>
       <div className="note-item__action">
         <DeleteButton id={props.id} onDeleteHandler={props.onDeleteHandler} />
-        <ArchiveButton />
+        <ArchiveButton
+          id={props.id}
+          onArchiveHandler={props.onArchiveHandler}
+        />
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ class NoteApp extends React.Component {
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
+    this.onArchiveHandler = this.onArchiveHandler.bind(this);
   }
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
@@ -37,8 +38,9 @@ class NoteApp extends React.Component {
     this.setState({ datas });
   }
 
-  onArchiveHandler() {
+  onArchiveHandler(id) {
     console.log("mantap bor archive");
+    console.log(id);
   }
 
   render() {
