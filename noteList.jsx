@@ -7,6 +7,7 @@ export default function NotesList(props) {
         <NoteItem
           onDeleteHandler={props.onDeleteHandler}
           onArchiveHandler={props.onArchiveHandler}
+          id={contact.id}
           key={contact.id}
           {...contact}
         />

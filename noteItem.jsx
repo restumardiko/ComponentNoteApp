@@ -1,6 +1,8 @@
+import ArchiveButton from "./archivedButton";
+import DeleteButton from "./deleteButton";
+
 // note item
 export default function NoteItem(props) {
-  
   return (
     <div className="note-item">
       <div className="note-item__content">
@@ -9,18 +11,8 @@ export default function NoteItem(props) {
         <p className="note-item__body">{props.body}</p>
       </div>
       <div className="note-item__action">
-        <button
-          onClick={props.onDeleteHandler}
-          className="note-item__delete-button"
-        >
-          Delete
-        </button>
-        <button
-          onClick={props.onArchiveHandler}
-          className="note-item__archive-button"
-        >
-          Arsipkan
-        </button>
+        <DeleteButton id={props.id} onDeleteHandler={props.onDeleteHandler} />
+        <ArchiveButton />
       </div>
     </div>
   );

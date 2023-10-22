@@ -11,6 +11,7 @@ class NoteApp extends React.Component {
     };
 
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onDeleteHandler = this.onDeleteHandler.bind(this);
   }
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
@@ -29,8 +30,11 @@ class NoteApp extends React.Component {
     });
   }
 
-  onDeleteHandler() {
-    console.log("mantap bor kena");
+  onDeleteHandler(id) {
+    console.log("delete");
+    console.log(id);
+    const datas = this.state.datas.filter((data) => data.id !== id);
+    this.setState({ datas });
   }
 
   onArchiveHandler() {
