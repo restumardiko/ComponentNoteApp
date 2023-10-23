@@ -1,6 +1,7 @@
 import NoteAppBody from "./noteAppBody";
 import NoteAppHeader from "./noteAppHeader";
 import { getInitialData } from "../utils";
+import { showFormattedDate } from "../utils";
 import React from "react";
 
 class NoteApp extends React.Component {
@@ -23,7 +24,7 @@ class NoteApp extends React.Component {
             id: +new Date(),
             title,
             body,
-            createdAt: +new Date(),
+            createdAt: showFormattedDate(+new Date()),
             archived: false,
           },
         ],
@@ -32,21 +33,23 @@ class NoteApp extends React.Component {
   }
 
   onDeleteHandler(id) {
-    console.log("delete");
-    console.log(id);
     const datas = this.state.datas.filter((data) => data.id !== id);
     this.setState({ datas });
   }
 
   onArchiveHandler(id) {
-    console.log("mantap bor archive");
-
     const datas = this.state.datas.filter((data) => data.id !== id);
     const data = this.state.datas.filter((data) => data.id === id);
-    data[0].archived = true;
-    const lastDatas = datas.push(data[0]);
-    console.log(datas);
-    this.setState({ datas });
+    if (data[0].archived === false) {
+      data[0].archived = true;
+      const lastDatas = datas.push(data[0]);
+      this.setState({ lastDatas });
+    } else {
+      data[0].archived = false;
+
+      const lastDatas = datas.push(data[0]);
+      this.setState({ lastDatas });
+    }
   }
 
   render() {

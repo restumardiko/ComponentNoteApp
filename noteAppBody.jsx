@@ -3,6 +3,7 @@ import NotesList from "./noteList";
 
 export default function NoteAppBody(props) {
   const datas = props.datas;
+
   return (
     <div className="note-app__body">
       <NoteInput addNote={props.addNote} />

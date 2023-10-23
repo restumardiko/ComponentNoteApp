@@ -8,6 +8,7 @@ export default function NotesList(props) {
           onDeleteHandler={props.onDeleteHandler}
           onArchiveHandler={props.onArchiveHandler}
           id={contact.id}
+          archived={contact.archived}
           key={contact.id}
           {...contact}
         />
