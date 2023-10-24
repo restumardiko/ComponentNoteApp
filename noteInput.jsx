@@ -30,10 +30,7 @@ class NoteInput extends React.Component {
   }
 
   onClickEventHandler() {
-    //event.preventDefault();
     this.props.addNote(this.state);
-    console.log(this.state);
-    console.log(this.props);
   }
 
   render() {
