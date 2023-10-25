@@ -7,7 +7,7 @@ import React from "react";
 // main data save in array ,mainData isolated from mainState,each main state change by add or delete,the mainData also change ,
 // the importan rule is that the state only display the UI ..
 let mainData = getInitialData();
-console.log(mainData);
+//console.log(mainData);
 
 class NoteApp extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class NoteApp extends React.Component {
       archived: false,
     };
     mainData.push(rawData);
-    console.log(mainData);
+    // console.log(mainData);
     this.setState((prevState) => {
       return {
         datas: [
@@ -52,13 +52,13 @@ class NoteApp extends React.Component {
   onDeleteHandler(id) {
     const datas = this.state.datas.filter((data) => data.id !== id);
     const index = mainData.findIndex((x) => x.id === id);
-    console.log(index);
+    // console.log(index);
     mainData.splice(index, 1);
-    console.log(mainData);
-    console.log(mainData == datas);
+    //console.log(mainData);
+    //console.log(mainData == datas);
 
     this.setState({ datas });
-    console.log(datas);
+    //console.log(datas);
   }
 
   onArchiveHandler(id) {
@@ -71,12 +71,12 @@ class NoteApp extends React.Component {
       data[0].archived = true;
       const lastDatas = datas.push(data[0]);
       this.setState({ lastDatas });
-      console.log(this.state.datas);
+      //console.log(this.state.datas);
       //maindata
       targetData[0].archived = true;
       remainsData.push(targetData[0]);
       mainData = remainsData;
-      console.log(mainData);
+      // console.log(mainData);
     } else {
       data[0].archived = false;
 
@@ -87,17 +87,17 @@ class NoteApp extends React.Component {
       targetData[0].archived = false;
       remainsData.push(targetData[0]);
       mainData = remainsData;
-      console.log(this.state.datas);
-      console.log(mainData);
+      //console.log(this.state.datas);
+      //console.log(mainData);
     }
   }
   onSearch(event) {
-    console.log(event.target.value);
+    //console.log(event.target.value);
     //
     const datas = mainData.filter((data) =>
       data.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
-    console.log(datas);
+    //console.log(datas);
 
     this.setState({ datas });
   }
