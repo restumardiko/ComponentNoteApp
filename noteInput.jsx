@@ -10,7 +10,7 @@ class NoteInput extends React.Component {
 
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
     this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
-    this.onClickEventHandler = this.onClickEventHandler.bind(this);
+    this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
   onTitleChangeEventHandler(event) {
@@ -37,7 +37,9 @@ class NoteInput extends React.Component {
     });
   }
 
-  onClickEventHandler() {
+  onSubmitEventHandler(event) {
+    event.preventDefault();
+
     this.props.addNote(this.state);
   }
 
@@ -45,26 +47,29 @@ class NoteInput extends React.Component {
     return (
       <div className="note-input">
         <h2>Buat catatan</h2>
-        <p className="note-input__title__char-limit">
-          sisa karakter:{50 - this.state.title.length}
-        </p>
-        <input
-          value={this.state.title}
-          onChange={this.onTitleChangeEventHandler}
-          type="text"
-          placeholder="Ini adalah judul ..."
-        />
-        <textarea
-          onChange={this.onBodyChangeEventHandler}
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Tuliskan catatanmu disini ..."
-        ></textarea>
-        <button onClick={this.onClickEventHandler} type="submit">
-          Buat
-        </button>
+        <form onSubmit={this.onSubmitEventHandler}>
+          <p className="note-input__title__char-limit">
+            Sisa karakter: {50 - this.state.title.length}
+          </p>
+          <input
+            value={this.state.title}
+            onChange={this.onTitleChangeEventHandler}
+            type="text"
+            placeholder="Ini adalah judul ..."
+            required
+          />
+          <textarea
+            value={this.state.body}
+            onChange={this.onBodyChangeEventHandler}
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Tuliskan catatanmu disini ..."
+            required
+          ></textarea>
+          <button type="submit">Buat</button>
+        </form>
       </div>
     );
   }
